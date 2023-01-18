@@ -12,14 +12,22 @@ njamba is your OpenAI assistant on the terminal. It is a command line tool that 
 ## How to run
 
 1. Clone the project
-   `$ git clone https://github.com/BrianMwangi21/njamba`
+   ```
+   $ git clone https://github.com/BrianMwangi21/njamba
+   ```
 2. Navigate into the project
-   `$ cd njamba`
+   ```
+   $ cd njamba
+   ```
 3. Copy `.env.example` file to `.env` file and set your OpenAI API keys in the .env file using your editor of choice. [Neovim](https://neovim.io/) is highly recommended
    ```
    $ cp .env.example .env
    ```
 4. Install the program
-   `$ go install`
+   ```
+   $ go install
+   ```
 5. Run the program
-   `$ njamba`
+   ```
+   $ njamba
+   ```
