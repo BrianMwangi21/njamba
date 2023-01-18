@@ -15,7 +15,7 @@ njamba is your OpenAI assistant on the terminal. It is a command line tool thatu
 
 1. Clone the project
    ```
-   $ git clone https://github.com/BrianMwangi21/njamba
+   $ git clone https://github.com/BrianMwangi21/njamba.git
    ```
 2. Navigate into the project
    ```
