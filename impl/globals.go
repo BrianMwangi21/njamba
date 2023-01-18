@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/manifoldco/promptui"
 )
@@ -40,8 +41,6 @@ func promptGetInput(pc promptContent) string {
 		os.Exit(1)
 	}
 
-	fmt.Printf("Input: %s\n", result)
-
 	return result
 }
 
@@ -73,4 +72,12 @@ func promptGetSelect(pc promptContent) string {
 	fmt.Printf("Input: %s\n", result)
 
 	return result
+}
+
+func printSlowly(s string) {
+	for _, r := range s {
+		fmt.Printf("%c", r)
+		time.Sleep(100 * time.Millisecond)
+	}
+	fmt.Println()
 }
