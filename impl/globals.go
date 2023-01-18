@@ -24,6 +24,10 @@ var (
 		"ada",
 		"babbage",
 	}
+	MULTIPLE_RESPONSES_CHOICES = []string{
+		"Yes! Show me all - I am rather curious",
+		"Nope. I'm good with just the first one - I'm feeling lucky",
+	}
 )
 
 type promptContent struct {
@@ -68,9 +72,8 @@ func promptGetSelect(pc promptContent, items []string) string {
 
 	for index < 0 {
 		prompt := promptui.SelectWithAdd{
-			Label:    pc.label,
-			Items:    items,
-			AddLabel: "Other",
+			Label: pc.label,
+			Items: items,
 		}
 
 		index, result, err = prompt.Run()
@@ -93,5 +96,4 @@ func printSlowly(s string) {
 		fmt.Printf("%c", r)
 		time.Sleep(100 * time.Millisecond)
 	}
-	fmt.Println()
 }

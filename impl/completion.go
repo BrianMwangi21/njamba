@@ -66,5 +66,25 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	printSlowly(resp.Choices[0].Text)
+	// Print all or one of the choices, if more than one
+	if len(resp.Choices) > 1 {
+		respPromptContent := promptContent{
+			"Please select a resp to use",
+			"Which resp would you like to use for this completion ?",
+		}
+		respPrompt := promptGetSelect(respPromptContent, MULTIPLE_RESPONSES_CHOICES)
+
+		switch respPrompt {
+		case MULTIPLE_RESPONSES_CHOICES[0]:
+			for index, choice := range resp.Choices {
+				printSlowly("=== Printing Choice " + strconv.Itoa(index) + " from OpenAPI ===\n")
+				printSlowly(choice.Text)
+			}
+		case MULTIPLE_RESPONSES_CHOICES[1]:
+			printSlowly(resp.Choices[0].Text)
+		}
+	} else {
+		printSlowly("=== Printing Only Choice from OpenAPI ===\n")
+		printSlowly(resp.Choices[0].Text)
+	}
 }
