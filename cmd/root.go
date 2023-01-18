@@ -23,9 +23,9 @@ It is also licensed under the GNU General Public License v3.0.
 
 Feel free to contribute to the project on Github: https://github.com/BrianMwangi21/njamba
 `,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+	// Run: func(cmd *cobra.Command, args []string) {
+	// 	impl.RunCompletion(cmd, args)
+	// },
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
