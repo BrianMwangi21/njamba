@@ -11,6 +11,9 @@ import (
 )
 
 func RunCompletion(cmd *cobra.Command, args []string) {
+	// Check API keys
+	apiKeys := configs.EnvOpenAI()
+
 	printSlowly("Running prompt completion...\n")
 
 	// Get user prompt
@@ -49,7 +52,7 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	c := gogpt.NewClient(configs.EnvOpenAI())
+	c := gogpt.NewClient(apiKeys)
 	ctx := context.Background()
 
 	req := gogpt.CompletionRequest{
