@@ -2,6 +2,7 @@ package impl
 
 import (
 	"context"
+	"os"
 
 	"github.com/BrianMwangi21/njamba/config"
 	gogpt "github.com/sashabaranov/go-gpt3"
@@ -23,10 +24,15 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 		MaxTokens: 10,
 		Prompt:    userPrompt,
 	}
-	resp, err := c.CreateCompletion(ctx, req)
+
+	var resp gogpt.CompletionResponse
+	var err error
+
+	resp, err = c.CreateCompletion(ctx, req)
 
 	if err != nil {
 		printSlowly(string(err.Error()))
+		os.Exit(1)
 	}
 
 	printSlowly(resp.Choices[0].Text)
