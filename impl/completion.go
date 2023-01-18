@@ -23,7 +23,7 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 	// Get model
 	modelPromptContent := promptContent{
 		"Please select a model to use",
-		"Which model would you like to use for this completion ?",
+		"Which gpt-model would you like to use for this completion ?",
 	}
 	modelPrompt := promptGetSelect(modelPromptContent, GPT_MODELS)
 
