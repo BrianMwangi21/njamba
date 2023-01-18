@@ -9,6 +9,23 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
+var (
+	GPT_MODELS = []string{
+		"text-davinci-003",
+		"text-davinci-002",
+		"text-curie-001",
+		"text-babbage-001",
+		"text-ada-001",
+		"text-davinci-001",
+		"davinci-instruct-beta",
+		"davinci",
+		"curie-instruct-beta",
+		"curie",
+		"ada",
+		"babbage",
+	}
+)
+
 type promptContent struct {
 	errorMsg string
 	label    string
@@ -44,8 +61,7 @@ func promptGetInput(pc promptContent) string {
 	return result
 }
 
-func promptGetSelect(pc promptContent) string {
-	items := []string{"animal", "food", "person", "object"}
+func promptGetSelect(pc promptContent, items []string) string {
 	index := -1
 	var result string
 	var err error
@@ -68,8 +84,6 @@ func promptGetSelect(pc promptContent) string {
 		fmt.Printf("Prompt failed %v\n", err)
 		os.Exit(1)
 	}
-
-	fmt.Printf("Input: %s\n", result)
 
 	return result
 }
