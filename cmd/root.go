@@ -10,18 +10,19 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
-
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "njamba",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "njamba is your OpenAI assistant on the terminal",
+	Long: `
+njamba is your OpenAI assistant on the terminal. It is a command line tool that
+uses the OpenAI API for natural language processing. It can be used to generate
+text, search for information, and answer questions. It is a work in progress and
+is currently in alpha stage. It is written in Go and uses Cobra for command line interface. 
+It is also licensed under the GNU General Public License v3.0.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Feel free to contribute to the project on Github: https://github.com/BrianMwangi21/njamba
+`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
@@ -47,5 +48,3 @@ func init() {
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
-
-
