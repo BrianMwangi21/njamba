@@ -50,11 +50,11 @@ The request will then be sent and the response shown.
 
 ## Why though ?
 
-**You** : "Why is this necessary when there is the sweet sweet [ChatGPT](https://chat.openai.com/) available for everyone and I don't even need the API keys to use?"
-**Me**: "True. That is a valid point. I often ask myself the same. Here's the thing : ChatGPT is amazing but the fact that it is open to everyone, the downtimes are becoming more frequent. With this tool and using your own API keys, you can use it as much as you want - or until you reach your quota. Also, and hear me out, it's just awesome on the terminal."
+**You** : "Why is this necessary when there is the sweet sweet [ChatGPT](https://chat.openai.com/) available for everyone and I don't even need the API keys to use?" <br />
+**Me**: "True. That is a valid point. I often ask myself the same. Here's the thing : ChatGPT is amazing but the fact that it is open to everyone, the downtimes are becoming more frequent. With this tool and using your own API keys, you can use it as much as you want - or until you reach your quota. Also, and hear me out, it's just awesome on the terminal." <br /><br />
 
-**You**: "Ok, I get you. But then again, ChatGPT uses the GPT model 3.5 and for the API we only have until version 3 available."
-**Me**: "True, another valid point. Yes, the current OpenAPI make use of model 3 but ChatGPT uses model 3.5 which for now is availbale on the portal for research purposes. However, OpenAI is already working on the next set of APIs and you can trust I am on the waitlist. The CLI will be updated as soon as the new APIs are available."
+**You**: "Ok, I get you. But then again, ChatGPT uses the GPT model 3.5 and for the API we only have until version 3 available." <br />
+**Me**: "True, another valid point. Yes, the current OpenAPI make use of model 3 but ChatGPT uses model 3.5 which for now is availbale on the portal for research purposes. However, OpenAI is already working on the next set of APIs and you can trust I am on the waitlist. The CLI will be updated as soon as the new APIs are available." <br /><br />
 
 ## Tests
 
