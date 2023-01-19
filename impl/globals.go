@@ -9,31 +9,26 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
+type promptContent struct {
+	errorMsg string
+	label    string
+}
+
+type GPT_MODELS struct {
+	names        []string
+	descriptions []string
+}
+
 var (
-	GPT_MODELS = []string{
-		"text-davinci-003",
-		"text-davinci-002",
-		"text-curie-001",
-		"text-babbage-001",
-		"text-ada-001",
-		"text-davinci-001",
-		"davinci-instruct-beta",
-		"davinci",
-		"curie-instruct-beta",
-		"curie",
-		"ada",
-		"babbage",
+	MODELS = GPT_MODELS{
+		[]string{"text-davinci-003", "text-curie-001", "text-babbage-001", "text-ada-001"},
+		[]string{"Most capable GPT-3 model, often with higher quality output.", "Very capable, but faster and lower cost than Davinci.", "Capable of straightforward tasks, very fast, and lower cost.", "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost."},
 	}
 	MULTIPLE_RESPONSES_CHOICES = []string{
 		"Yes! Show me all - I am rather curious",
 		"Nope. I'm good with just the first one - I'm feeling lucky",
 	}
 )
-
-type promptContent struct {
-	errorMsg string
-	label    string
-}
 
 func promptGetInput(pc promptContent) string {
 	validate := func(input string) error {
@@ -65,7 +60,7 @@ func promptGetInput(pc promptContent) string {
 	return result
 }
 
-func promptGetSelect(pc promptContent, items []string) string {
+func promptGetSelect(pc promptContent, items []string) (int, string) {
 	index := -1
 	var result string
 	var err error
@@ -88,7 +83,7 @@ func promptGetSelect(pc promptContent, items []string) string {
 		os.Exit(1)
 	}
 
-	return result
+	return index, result
 }
 
 func printSlowly(s string) {
@@ -96,4 +91,12 @@ func printSlowly(s string) {
 		fmt.Printf("%c", r)
 		time.Sleep(100 * time.Millisecond)
 	}
+}
+
+func prettyModelDesc() []string {
+	var result []string
+	for i, name := range MODELS.names {
+		result = append(result, fmt.Sprintf("%s - %s", name, MODELS.descriptions[i]))
+	}
+	return result
 }

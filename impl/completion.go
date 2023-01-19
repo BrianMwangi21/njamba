@@ -28,7 +28,7 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 		"Please select a model to use",
 		"Which gpt-model would you like to use for this completion ?",
 	}
-	modelPrompt := promptGetSelect(modelPromptContent, GPT_MODELS)
+	modelIndex, _ := promptGetSelect(modelPromptContent, prettyModelDesc())
 
 	// Get temperature
 	tempPromptContent := promptContent{
@@ -57,7 +57,7 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 
 	req := gogpt.CompletionRequest{
 		Prompt:      userPrompt,
-		Model:       modelPrompt,
+		Model:       MODELS.names[modelIndex],
 		Temperature: float32(tempPrompt),
 		MaxTokens:   tokensPrompt,
 	}
@@ -75,7 +75,7 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 			"Please select a resp to use",
 			"Which resp would you like to use for this completion ?",
 		}
-		respPrompt := promptGetSelect(respPromptContent, MULTIPLE_RESPONSES_CHOICES)
+		_, respPrompt := promptGetSelect(respPromptContent, MULTIPLE_RESPONSES_CHOICES)
 
 		switch respPrompt {
 		case MULTIPLE_RESPONSES_CHOICES[0]:
