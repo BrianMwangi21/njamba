@@ -50,11 +50,13 @@ $ njamba prompt
 On running this prompt, you will be guided through :
 
 1. Prompt input
-2. GPT Model selection
+2. GPT Model selection - Text completion models are shown by default.
 3. Temperature input
 4. Max tokens input
 
 The request will then be sent and the response shown.
+
+This prompt command also accomodates for the flag `--code`. Using this flag i.e `$ njamba prompt --code` will then allow the user to select the code completion models instead of the default text completion models.
 
 ## Why though ?
 
