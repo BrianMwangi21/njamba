@@ -23,15 +23,18 @@ import (
 // promptCmd represents the prompt command
 var promptCmd = &cobra.Command{
 	Use:   "prompt",
-	Short: "This command allows a user to send a prompt to the OpenAI Api",
-	Long: `
-This command allows a user to send a prompt to the OpenAI Api.
+	Short: "This command allows a user to send a prompt to the OpenAI API",
+	Long: `This command allows a user to send a prompt to the OpenAI API.
 The user will be guided through the process of creating a prompt.
-After the necessary steps, the prompt will be sent to the OpenAI Api and 
+After the necessary steps, the prompt will be sent to the OpenAI API and 
 a response returned to the user.
+
+This command uses the completion models.
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
-		impl.RunCompletion(cmd, args)
+		codeFlag, _ := cmd.Flags().GetBool("code")
+
+		impl.RunCompletion(cmd, args, codeFlag)
 	},
 }
 
@@ -46,5 +49,5 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// promptCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	promptCmd.Flags().BoolP("code", "c", false, "Use this flag to send a request to the code completion models instead of the default text completion models.")
 }

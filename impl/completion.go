@@ -10,7 +10,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func RunCompletion(cmd *cobra.Command, args []string) {
+func RunCompletion(cmd *cobra.Command, args []string, codeFlag bool) {
+	var model string
 	// Check API keys
 	apiKeys := configs.EnvOpenAI()
 
@@ -28,7 +29,12 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 		"Please select a model to use",
 		"Which gpt-model would you like to use for this completion ?",
 	}
-	modelIndex, _ := promptGetSelect(modelPromptContent, prettyModelDesc())
+	modelIndex, _ := promptGetSelect(modelPromptContent, prettyModelDesc(codeFlag))
+	if codeFlag {
+		model = CODE_MODELS.names[modelIndex]
+	} else {
+		model = TEXT_MODELS.names[modelIndex]
+	}
 
 	// Get temperature
 	tempPromptContent := promptContent{
@@ -57,7 +63,7 @@ func RunCompletion(cmd *cobra.Command, args []string) {
 
 	req := gogpt.CompletionRequest{
 		Prompt:      userPrompt,
-		Model:       MODELS.names[modelIndex],
+		Model:       model,
 		Temperature: float32(tempPrompt),
 		MaxTokens:   tokensPrompt,
 	}
