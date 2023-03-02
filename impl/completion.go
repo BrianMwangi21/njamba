@@ -61,39 +61,38 @@ func RunCompletion(cmd *cobra.Command, args []string, codeFlag bool) {
 	c := gogpt.NewClient(apiKeys)
 	ctx := context.Background()
 
-	req := gogpt.CompletionRequest{
-		Prompt:      userPrompt,
-		Model:       model,
-		Temperature: float32(tempPrompt),
-		MaxTokens:   tokensPrompt,
-	}
-
-	resp, err := c.CreateCompletion(ctx, req)
-
-	if err != nil {
-		printSlowly(string(err.Error()))
-		os.Exit(1)
-	}
-
-	// Print all or one of the choices, if more than one
-	if len(resp.Choices) > 1 {
-		respPromptContent := promptContent{
-			"Please select a resp to use",
-			"Which resp would you like to use for this completion ?",
+	if modelIndex == 0 {
+		req := gogpt.ChatCompletionRequest{
+			Model:       model,
+			Temperature: float32(tempPrompt),
+			MaxTokens:   tokensPrompt,
+			Messages: []gogpt.ChatCompletionMessage{
+				{Role: "user", Content: userPrompt},
+			},
 		}
-		_, respPrompt := promptGetSelect(respPromptContent, MULTIPLE_RESPONSES_CHOICES)
 
-		switch respPrompt {
-		case MULTIPLE_RESPONSES_CHOICES[0]:
-			for index, choice := range resp.Choices {
-				printSlowly("=== Printing Choice " + strconv.Itoa(index) + " from OpenAPI ===\n")
-				printSlowly(choice.Text)
-			}
-		case MULTIPLE_RESPONSES_CHOICES[1]:
-			printSlowly(resp.Choices[0].Text)
+		resp, err := c.CreateChatCompletion(ctx, req)
+
+		if err != nil {
+			printSlowly(string(err.Error()))
+			os.Exit(1)
 		}
+
+		printSlowly(resp.Choices[0].Message.Content)
 	} else {
-		printSlowly("=== Printing Only Choice from OpenAPI ===\n")
+		req := gogpt.CompletionRequest{
+			Prompt:      userPrompt,
+			Model:       model,
+			Temperature: float32(tempPrompt),
+			MaxTokens:   tokensPrompt,
+		}
+
+		resp, err := c.CreateCompletion(ctx, req)
+
+		if err != nil {
+			printSlowly(string(err.Error()))
+			os.Exit(1)
+		}
 		printSlowly(resp.Choices[0].Text)
 	}
 }

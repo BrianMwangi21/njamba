@@ -1,4 +1,4 @@
-# njamba
+# njamba - now using gpt-3-turbo!
 
 njamba is your OpenAI assistant on the terminal. It is a command line tool that uses the OpenAI API for natural language processing. It can be used to generate text, search for information, and answer questions. It is a work in progress and is currently in alpha stage. It is written in Go and uses Cobra for command line interface.
 

@@ -21,8 +21,8 @@ type GPT_MODELS struct {
 
 var (
 	TEXT_MODELS = GPT_MODELS{
-		[]string{"text-davinci-003", "text-curie-001", "text-babbage-001", "text-ada-001"},
-		[]string{"Most capable GPT-3 model, often with higher quality output.", "Very capable, but faster and lower cost than Davinci.", "Capable of straightforward tasks, very fast, and lower cost.", "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost."},
+		[]string{"gpt-3.5-turbo", "text-davinci-003", "text-curie-001", "text-babbage-001", "text-ada-001"},
+		[]string{"We've all tried ChatGPT, I mean. What more can I say?", "Most capable GPT-3 model, often with higher quality output.", "Very capable, but faster and lower cost than Davinci.", "Capable of straightforward tasks, very fast, and lower cost.", "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost."},
 	}
 	CODE_MODELS = GPT_MODELS{
 		[]string{"code-davinci-002", "code-cushman-001"},
