@@ -93,7 +93,7 @@ func promptGetSelect(pc promptContent, items []string) (int, string) {
 func printSlowly(s string) {
 	for _, r := range s {
 		fmt.Printf("%c", r)
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(50 * time.Millisecond)
 	}
 }
 
